@@ -37,13 +37,15 @@
 (defcustom erc-view-log-nickname-face-function
   nil
   "A function that returns a face, given a nick. nil to use default erc face."
-  :type 'function)
+  :type 'function
+  :group 'erc-view-log)
 
 (defcustom erc-view-log-my-nickname-match
   erc-nick
   "A match for the user's nickname: either a regexp, or a list of nicks."
   :type '(choice (regexp :tag "A regexp that matches the user's nick.")
-		 (list :tag "A list of used nicks. Each nick should be unique and should not contain any regexps.")))
+		 (list :tag "A list of used nicks. Each nick should be unique and should not contain any regexps."))
+  :group 'erc-view-log)
 
 
 ;; Warning: do not use group constructions ("\\(some regexp\\)") inside the following regexps
