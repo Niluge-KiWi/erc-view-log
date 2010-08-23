@@ -30,8 +30,6 @@
 
 ;;; TODO:
 ;; - r to reload the log
-;; - handle priv messages?: erc-direct-msg-face
-;; - handle nick for private messages?: erc-nick-msg-face
 ;; - use vlf.el for large logs? has to be adapted (no more major mode, and handle full lines...)
 
 (require 'erc)
