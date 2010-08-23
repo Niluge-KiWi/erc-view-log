@@ -29,7 +29,6 @@
 ;;    For the list, each nick should be unique and should not contain any regexps.
 
 ;;; TODO:
-;; - r to reload the log
 ;; - use vlf.el for large logs? has to be adapted (no more major mode, and handle full lines...)
 
 (require 'erc)
@@ -142,6 +141,20 @@
     st)
   "Syntax table used while in `erc-view-log-mode'.")
 
+
+(defun erc-view-log-reload-file ()
+  "Reload the current logfile."
+  (interactive)
+  (revert-buffer t t t)
+  ;; revert-buffer removes read-only state
+  (setq buffer-read-only t))
+
+;; Create the keymap for this mode.
+(defvar erc-view-log-mode-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map "r" 'erc-view-log-reload-file)
+    map)
+  "Keymap for `erc-view-log-mode'.")
 
 (define-derived-mode erc-view-log-mode fundamental-mode
   "ERC View Log"
