@@ -1,11 +1,11 @@
-;;; erc-view-log.el --- Minor mode for viewing erc logs
+;;; erc-view-log.el --- Major mode for viewing ERC logs
 
 ;; Copyright (C) 2010 Antoine Levitt
 ;; Copyright (C) 2010 Thomas Riccardi
 
 ;; Author: Antoine Levitt
 ;;         Thomas Riccardi <riccardi.thomas@gmail.com>
-;; Keywords: erc viewer logs colors
+;; Keywords: ERC viewer logs colors
 
 ;; This program is free software. It comes without any warranty, to
 ;; the extent permitted by applicable law. You can redistribute it
@@ -14,7 +14,7 @@
 ;; http://sam.zoy.org/wtfpl/COPYING for more details.
 
 ;;; Description:
-;; Set colors on an erc log file
+;; Set colors on an ERC log file
 
 ;;; Installation:
 ;;    (require 'erc-view-log)
@@ -23,7 +23,7 @@
 ;;; Options:
 ;; - erc-view-log-nickname-face-function:
 ;;    A function that returns a face, given a nick, to colorize nicks.
-;;    Can be nil to use standard erc face.
+;;    Can be nil to use standard ERC face.
 ;; - erc-view-log-my-nickname-match:
 ;;    Either a regexp or a list of nicks, to match the user's nickname.
 ;;    For the list, each nick should be unique and should not contain any regexps.
@@ -36,7 +36,7 @@
 
 (defcustom erc-view-log-nickname-face-function
   nil
-  "A function that returns a face, given a nick. nil to use default erc face."
+  "A function that returns a face, given a nick. nil to use default ERC face."
   :type 'function
   :group 'erc-view-log)
 
@@ -160,6 +160,14 @@
 
 (define-derived-mode erc-view-log-mode fundamental-mode
   "ERC View Log"
+  "Major mode for viewing ERC logs.
+Colorizes the log file as if it were a standard ERC buffer.
+
+Special commands:
+
+\\{erc-view-log-mode-map}
+
+Turning on `erc-view-log-mode' runs the hook `erc-view-log-mode-hook'."
   (setq font-lock-defaults `(,(erc-view-log-get-keywords)))
   (setq buffer-read-only t))
 
