@@ -25,7 +25,7 @@
 ;;    A function that returns a face, given a nick, to colorize nicks.
 ;;    Can be nil to use standard erc face.
 ;; - erc-view-log-my-nickname-match:
-;;    Either a regexp or a list of nicks, to match our own nickname.
+;;    Either a regexp or a list of nicks, to match the user's nickname.
 ;;    For the list, each nick should be unique and should not contain any regexps.
 
 ;;; TODO:
@@ -41,8 +41,8 @@
 
 (defcustom erc-view-log-my-nickname-match
   erc-nick
-  "A match for my nickname: either a regexp, or a list of nicks."
-  :type '(choice (regexp :tag "A regexp that matches my nick.")
+  "A match for the user's nickname: either a regexp, or a list of nicks."
+  :type '(choice (regexp :tag "A regexp that matches the user's nick.")
 		 (list :tag "A list of used nicks. Each nick should be unique and should not contain any regexps.")))
 
 
@@ -83,7 +83,7 @@
     'erc-nick-default-face))
 
 (defun erc-log-get-my-nick-regexp ()
-  "Returns a regexp that matches my nick according to custom erc-view-log-my-nickname-match."
+  "Returns a regexp that matches the user's nick according to custom erc-view-log-my-nickname-match."
   (if (listp erc-view-log-my-nickname-match)
       (regexp-opt erc-view-log-my-nickname-match)
     erc-view-log-my-nickname-match))
@@ -99,7 +99,7 @@
 	 (2 'erc-default-face)
 	 (3 'erc-my-nick-face)
 	 (4 'erc-default-face)
-	 (5 'erc-input-face) ;; my message
+	 (5 'erc-input-face) ;; own message
 	 )
        ;; standard message line
        `(,(format "^\\(%s\\) \\(<\\)\\(%s\\)\\(>\\)[ \t]\\(%s\\)$" erc-view-log-timestamp-regexp erc-view-log-nickname-regexp erc-view-log-message-regexp)
