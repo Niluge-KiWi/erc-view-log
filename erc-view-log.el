@@ -32,7 +32,6 @@
 ;; - r to reload the log
 ;; - handle priv messages?: erc-direct-msg-face
 ;; - handle nick for private messages?: erc-nick-msg-face
-;; - handle "*** Users on"?: erc-current-nick-face
 ;; - use vlf.el for large logs? has to be adapted (no more major mode, and handle full lines...)
 
 (require 'erc)
@@ -50,29 +49,34 @@
 		 (list :tag "A list of used nicks. Each nick should be unique and should not contain any regexps.")))
 
 
+;; Warning: do not use group constructions ("\\(some regexp\\)") inside the following regexps
 (defvar erc-view-log-timestamp-regexp
   ".*"
-  "Regexp to match timestamps (no group match).")
+  "Regexp to match timestamps.")
 
 (defvar erc-view-log-nickname-regexp
   erc-valid-nick-regexp
-  "Regexp to match nicknames (no group match).")
+  "Regexp to match nicknames.")
 
 (defvar erc-view-log-message-regexp
   ".*"
-  "Regexp to match messages (no group match).")
+  "Regexp to match messages.")
+
+(defvar erc-view-log-current-nick-regexp
+  "\\*\\*\\* Users on .*: .*"
+  "Regexp to match current nicks lines.")
 
 (defvar erc-view-log-notice-regexp
   "\\*\\*\\* .*"
-  "Regexp to match notices (no group match).")
+  "Regexp to match notices.")
 
 (defvar erc-view-log-action-regexp
   (format "\\* %s .*" erc-valid-nick-regexp)
-  "Regexp to match actions (no group match).")
+  "Regexp to match actions.")
 
 (defvar erc-view-log-prompt-regexp
   erc-prompt
-  "Regexp to match prompts (no group match).")
+  "Regexp to match prompts.")
 
 
 (defun erc-log-nick-get-face (nick)
@@ -107,6 +111,11 @@
 	 (3 (erc-log-nick-get-face (match-string 3)))
 	 (4 'erc-default-face)
 	 (5 'erc-default-face) ;; other message
+	 )
+       ;; current nicks line
+       `(,(format "\\(%s\\) \\(%s\\)" erc-view-log-timestamp-regexp erc-view-log-current-nick-regexp)
+	 (1 'erc-timestamp-face)
+	 (2 'erc-current-nick-face)
 	 )
        ;; notice line
        `(,(format "\\(%s\\) \\(%s\\)" erc-view-log-timestamp-regexp erc-view-log-notice-regexp)
