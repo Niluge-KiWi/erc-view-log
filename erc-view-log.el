@@ -13,7 +13,7 @@
 ;; To Public License, Version 2, as published by Sam Hocevar. See
 ;; http://sam.zoy.org/wtfpl/COPYING for more details.
 
-;;; Description:
+;;; Commentary:
 ;; Set colors on an ERC log file
 
 ;;; Installation:
@@ -38,14 +38,14 @@
   nil
   "A function that returns a face, given a nick. nil to use default ERC face."
   :type 'function
-  :group 'erc-view-log)
+  :group 'erc)
 
 (defcustom erc-view-log-my-nickname-match
   erc-nick
   "A match for the user's nickname: either a regexp, or a list of nicks."
   :type '(choice (regexp :tag "A regexp that matches the user's nick.")
 		 (list :tag "A list of used nicks. Each nick should be unique and should not contain any regexps."))
-  :group 'erc-view-log)
+  :group 'erc)
 
 
 ;; Warning: do not use group constructions ("\\(some regexp\\)") inside the following regexps
