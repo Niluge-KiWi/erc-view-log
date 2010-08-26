@@ -5,6 +5,7 @@
 
 ;; Author: Antoine Levitt
 ;;         Thomas Riccardi <riccardi.thomas@gmail.com>
+;; URL: http://github.com/Niluge-KiWi/dotfiles/blob/master/.emacs.d/erc-view-log.el
 ;; Keywords: ERC viewer logs colors
 
 ;; This program is free software. It comes without any warranty, to
@@ -15,12 +16,13 @@
 
 ;;; Commentary:
 ;; Set colors on an ERC log file
+;; Will not work with erc-fill-mode
 
-;;; Installation:
+;; Installation:
 ;;    (require 'erc-view-log)
 ;;    (add-to-list 'auto-mode-alist '("\\.erclogs/.*\\.log" . erc-view-log-mode))
 
-;;; Options:
+;; Options:
 ;; - erc-view-log-nickname-face-function:
 ;;    A function that returns a face, given a nick, to colorize nicks.
 ;;    Can be nil to use standard ERC face.
@@ -28,8 +30,10 @@
 ;;    Either a regexp or a list of nicks, to match the user's nickname.
 ;;    For the list, each nick should be unique and should not contain any regexps.
 
-;;; TODO:
+;; TODO:
 ;; - use vlf.el for large logs? has to be adapted (no more major mode, and handle full lines...)
+
+;;; Code:
 
 (require 'erc)
 
