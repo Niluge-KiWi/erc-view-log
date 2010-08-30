@@ -5,7 +5,8 @@
 
 ;; Author: Antoine Levitt
 ;;         Thomas Riccardi <riccardi.thomas@gmail.com>
-;; URL: http://github.com/Niluge-KiWi/dotfiles/blob/master/.emacs.d/erc-view-log.el
+;; URL: http://github.com/Niluge-KiWi/erc-view-log/raw/master/erc-view-log.el
+;; Homepage: http://github.com/Niluge-KiWi/erc-view-log/
 ;; Keywords: ERC viewer logs colors
 
 ;; This program is free software. It comes without any warranty, to
