@@ -55,7 +55,7 @@
 
 ;; Warning: do not use group constructions ("\\(some regexp\\)") inside the following regexps
 (defvar erc-view-log-timestamp-regexp
-  ".*"
+  "[^<]*"
   "Regexp to match timestamps.")
 
 (defvar erc-view-log-nickname-regexp
