@@ -159,7 +159,7 @@
 ;; Create the keymap for this mode.
 (defvar erc-view-log-mode-map
   (let ((map (make-sparse-keymap)))
-    (define-key map "r" 'erc-view-log-reload-file)
+    (define-key map "g" 'erc-view-log-reload-file)
     map)
   "Keymap for `erc-view-log-mode'.")
 
