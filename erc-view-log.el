@@ -21,7 +21,7 @@
 
 ;; Installation:
 ;;    (require 'erc-view-log)
-;;    (add-to-list 'auto-mode-alist '("\\.erclogs/.*\\.log" . erc-view-log-mode))
+;;    (add-to-list 'auto-mode-alist `(,(format "%s/.*\\.log" (regexp-quote (expand-file-name erc-log-channels-directory))) . erc-view-log-mode))
 
 ;; Options:
 ;; - erc-view-log-nickname-face-function:
