@@ -174,7 +174,12 @@ Special commands:
 
 Turning on `erc-view-log-mode' runs the hook `erc-view-log-mode-hook'."
   (setq font-lock-defaults `(,(erc-view-log-get-keywords)))
-  (setq buffer-read-only t))
+  (setq buffer-read-only t)
+  ;; workaround for emacs bug #11943: 24.1.50; Emacs unusably slow when looking at large files
+  ;;(setq bidi-paragraph-direction 'left-to-right)
+  ;; even faster workaround
+  (setq bidi-display-reordering nil)
+  )
 
 
 (provide 'erc-view-log)
