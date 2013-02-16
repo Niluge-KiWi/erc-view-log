@@ -156,10 +156,28 @@
   ;; revert-buffer removes read-only state
   (setq buffer-read-only t))
 
+(defun erc-view-log-previous-mention (&optional arg)
+  "Move point to previous mention of one's nick.
+If ARG is set, move to previous message from one's nick."
+  (interactive "P")
+  (re-search-backward
+   (format (if (null arg) "%s" "^[^<]*<%s>")
+           (regexp-opt erc-view-log-my-nickname-match))))
+
+(defun erc-view-log-next-mention (&optional arg)
+  "Move point to next mention of one's nick.
+If ARG is set, move to next message from one's nick."
+  (interactive "P")
+  (re-search-forward
+   (format (if (null arg) "%s" "^[^<]*<%s>")
+           (regexp-opt erc-view-log-my-nickname-match))))
+
 ;; Create the keymap for this mode.
 (defvar erc-view-log-mode-map
   (let ((map (make-sparse-keymap)))
     (define-key map "g" 'erc-view-log-reload-file)
+    (define-key map "p" 'erc-view-log-previous-mention)
+    (define-key map "n" 'erc-view-log-next-mention)
     map)
   "Keymap for `erc-view-log-mode'.")
 
