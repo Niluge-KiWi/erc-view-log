@@ -181,6 +181,7 @@ If ARG is set, move to next message from one's nick."
     map)
   "Keymap for `erc-view-log-mode'.")
 
+;;;###autoload
 (define-derived-mode erc-view-log-mode fundamental-mode
   "ERC View Log"
   "Major mode for viewing ERC logs.
