@@ -23,6 +23,9 @@
 ;;    (require 'erc-view-log)
 ;;    (add-to-list 'auto-mode-alist `(,(format "%s/.*\\.log" (regexp-quote (expand-file-name erc-log-channels-directory))) . erc-view-log-mode))
 
+;; Recommended:
+;;    (add-hook 'erc-view-log-mode-hook 'turn-on-auto-revert-tail-mode)
+
 ;; Options:
 ;; - erc-view-log-nickname-face-function:
 ;;    A function that returns a face, given a nick, to colorize nicks.
